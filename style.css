@@ -1,0 +1,292 @@
+/* Custom Properties */
+
+:root {
+  /* Base Font Size */
+  font-size: 16px;
+
+  /* Typography */
+
+  --ff-primary: "Barlow Semi Condensed", serif;
+
+  --fs-11: 0.6875rem;
+  --fs-13-primary: 0.8125rem;
+  --fs-20: 1.25rem;
+
+  --fw-500: 500;
+  --fw-600: 600;
+
+  /* Colors */
+
+  --clr-primary-bg: hsl(210, 46%, 95%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --clr-grey-200: hsl(0, 0%, 81%);
+  --clr-grey-500: hsl(217, 19%, 35%);
+
+  --clr-purple-300: hsl(264, 82%, 70%);
+  --clr-purple-500: hsl(263, 55%, 52%);
+  --clr-dark-blue: hsl(219, 29%, 14%);
+
+  /* Opacity */
+
+  --op-50: 50%;
+  --op70: 70%;
+
+  /* Spacing */
+
+  --sp-17: 1.0625rem;
+  --sp-24: 1.5rem;
+  --sp-26: 1.625rem;
+  --sp-32: 2rem;
+
+  /* Radius */
+
+  --r-8: 0.5rem;
+}
+
+/* CSS Rests */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+html,
+body {
+  height: 100%;
+  line-height: calc(18 / 13);
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Utility Classes */
+
+.quotes {
+  position: absolute;
+  right: clamp(1.5rem, 0.5rem + 5vw, 5rem);;
+  z-index: -1;
+}
+
+.daniel {
+  position: relative;
+  z-index: 0;
+}
+
+.bg-white {
+  background-color: var(--clr-white);
+}
+
+.bg-gr-500 {
+  background-color: var(--clr-grey-500);
+}
+.bg-purple-500 {
+  background-color: var(--clr-purple-500);
+}
+
+.bg-drk-blue {
+  background-color: var(--clr-dark-blue);
+}
+
+.clr-bg {
+  color: var(--clr-primary-bg);
+}
+
+.clr-white {
+  color: var(--clr-white);
+}
+
+.clr-gr-200 {
+  color: var(--clr-grey-200);
+}
+
+.clr-gr-500 {
+  color: var(--clr-grey-500);
+}
+
+.fs-11 {
+  font-size: var(--fs-11);
+}
+
+.fs-20 {
+  font-size: var(--fs-20);
+}
+
+.fw-600 {
+  font-weight: var(--fw-600);
+}
+.op-50 {
+  opacity: var(--op-50);
+}
+
+.op-70 {
+  opacity: var(--op70);
+}
+
+.lh-normal {
+  line-height: normal;
+}
+
+.card-header > img {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+}
+
+/* General Styling */
+
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-13-primary);
+  font-weight: var(--fw-500);
+  background-color: var(--clr-primary-bg);
+  display: grid;
+  place-items: center;
+}
+
+.primary-content {
+  margin: 71px 24px;
+}
+
+.primary-content-wrapper {
+  display: grid;
+  gap: var(--sp-24);
+}
+
+.card {
+  border-radius: var(--r-8);
+}
+
+.card-wrapper {
+  margin-block: var(--sp-26) var(--sp-32);
+  margin-inline: var(--sp-32);
+  display: grid;
+  gap: 1rem;
+}
+
+.card-header {
+  display: flex;
+  gap: var(--sp-17);
+  align-items: center;
+}
+
+.daniel > .card-wrapper > .card-header > img,
+.patrick > .card-wrapper > .card-header > img {
+  border: 3px solid var(--clr-purple-300);
+}
+
+.daniel .card-wrapper > p:first-of-type {
+  margin-bottom: var(--sp-24);
+}
+
+@media (min-width: 60em) {
+  .primary-content-wrapper {
+    max-width: 1110px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "daniel daniel jonathan kira"
+      "jeanette patrick patrick kira";
+  }
+
+  .daniel {
+    grid-area: daniel;
+  }
+  .jonathan {
+    grid-area: jonathan;
+  }
+  .kira {
+    grid-area: kira;
+  }
+  .jeanette {
+    grid-area: jeanette;
+  }
+  .patrick {
+    grid-area: patrick;
+  }
+
+  .daniel .card-wrapper > p:first-of-type,
+  .patrick .card-wrapper > p:first-of-type,
+  .kira .card-wrapper > p:first-of-type,
+  .jeanette .card-wrapper > p:first-of-type {
+    margin-bottom: 8px;
+  }
+
+  .kira .card-wrapper,
+  .patrick .card-wrapper,
+  .jeanette .card-wrapper {
+    margin-block: var(--sp-26);
+  }
+}
